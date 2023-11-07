@@ -1,0 +1,675 @@
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 25fr 25fr 25fr 25fr;
+  grid-gap: 10px;
+
+	max-width: 70em;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.box {
+  color: #2b2a29;
+  padding: 20px;
+  border-radius:2px;
+}
+
+/* ------ EINAUSBLEND EFFEKT ---------*/
+.wish{
+	opacity: 0.2;
+	transition: opacity .5s ease-in-out;
+}
+
+  .visible {
+    opacity:1;
+  }
+
+.boxhead{
+	grid-column: 1/5;
+	grid-row: 1;
+}
+.boxnav{
+  grid-column: 1/5;
+	grid-row: 2;
+}
+.boxsidebar{
+  grid-column: 1/2;
+	grid-row: 3;
+}
+.boxmain{
+  grid-column: 1/5;
+	grid-row: 3;
+}
+.boxmainsmall{
+  grid-column: 2/5 ;
+	grid-row: 3 / span 2;
+  grid-row-end: 3;
+}
+.boxfooter{
+	grid-column: 1/5;
+	grid-row: 4;
+}
+
+
+
+/* -------- SEITEN KRAM -------- */
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+h2{	font-size:1.2em;}
+h3{
+  font-size:1em;
+  margin-bottom: 2px;
+  margin-top: 2px;
+  }
+h4{
+  font-size:0.9em;
+  margin-bottom: 2px;
+  margin-top: 2px;
+  }
+h5{
+  font-size:0.8em;
+  margin-bottom: 2px;
+  margin-top: 2px;
+}
+li{
+	margin-bottom:1em;
+}
+p { hyphens: auto; }
+img {
+  width: 15em;
+  display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.abstand{
+  height:10px;
+}
+/* -------- HEADER STYLE -------- */
+
+.boxhead {
+  background-color: #777;
+  padding: 30px;
+  text-align: center;
+  font-size: 2vw;
+  color: #FFF;
+  text-shadow: 5px 5px 5px #2b2a29;
+}
+
+.boxhead img{
+	height:auto;
+	width:15vw;
+	float: left;
+}
+
+/* -------- RANDLEISTEN STYLE -------- */
+.rand{
+	background-color:#bde451;
+}
+
+.rand p  {
+	font-size: 0.9em;
+}
+.rand ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+/* -------- INHALTBOXEN STYLE -------- */
+.inhalt {
+	background-color: #f1f1f1;
+}
+
+/* -------- NAVIGATION STYLE -------- */
+
+a.navlink:link, a.navlink:visited {
+  color: #FFFFFF;
+}
+
+.nav{
+  background-color: #777;
+  padding: 0.2em;
+  text-align: center;
+  font-size: 1.2em;
+  color: #000000;
+}
+
+.navlink{
+  background-color: #777777;
+  border: 2px;
+  color: #FFFFFF;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+
+  color: black;
+  border: 2px solid #bde451;
+  -webkit-appearance: none;
+}
+
+/* -------- FOOTER STYLE -------- */
+.boxfooter{
+	background-color: #777;
+	text-align: center;
+	color: white;
+}
+.boxfooterlangeseite{
+	background-color: #777;
+	text-align: center;
+	color: white;
+}
+.boxfooter a:visited,.boxfooter a,.boxfooter a:link .boxfooterlangeseite a:visited, .boxfooterlangeseite a:link{
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+
+/*---------- Accordion ---------------------- */
+
+/* Style the buttons that are used to open and close the accordion panel */
+.accordion {
+  background-color: #FFFFFF;
+  color: #000000;
+  cursor: pointer;
+  padding: 18px;
+  width: 100%;
+  border: 3px solid #bde451;
+  margin-top: -3px;
+  text-align: left;
+  outline: none;
+  font-size: 1.2em;
+  transition: 0.4s;
+}
+
+.active, .accordion:hover {
+  background-color: #ccc;
+}
+
+.accordion:after {
+  content: '\002B';
+  color: #777;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.active:after {
+  content: "\2212";
+}
+
+.panel {
+  padding: 0 18px;
+  background-color: white;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
+}
+
+div.panel.show {
+    opacity: 1;
+    max-height: 100000px; /* Whatever you like, as long as its more than the height of the content (on all screen sizes) */
+}
+
+
+ /* -------- The Modal (Fenster Hintergrund) -------- */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  padding-top: 60px;
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 5px auto; /* 15% from the top and centered */
+  border: 1px solid #888;
+  width: 50em; /* Could be more or less, depending on screen size */
+  max-width:80%;
+  padding: 5vw;
+}
+
+.imgcontainer{
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imgcontainer img{
+	width:15vw;
+}
+
+/* The Close Button */
+.close {
+  /* Position it in the top right corner outside of the modal */
+  position: absolute;
+  right: 25px;
+  top: 0;
+  color: #000;
+  font-size: 35px;
+  font-weight: bold;
+}
+
+/* Close button on hover */
+.close:hover,
+.close:focus {
+  color: #bde451;
+  cursor: pointer;
+}
+
+/* Add Zoom Animation */
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+  from {-webkit-transform: scale(0)}
+  to {-webkit-transform: scale(1)}
+}
+
+@keyframes animatezoom {
+  from {transform: scale(0)}
+  to {transform: scale(1)}
+}
+
+/*  HIER KOMMEN DIE FORMULAR ANGABEN  */
+
+.formeinstellung{
+  align:center;
+}
+
+
+input[type=text],[type=password],[type=email] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  font-size: 16px;
+  border: 3px solid #777;
+}
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+input[type=password]:focus {
+  border: 3px solid #555;
+}
+input[type=email]:focus {
+  border: 3px solid #555;
+}
+
+.suchfeld input{
+	width: 80%;
+	margin-right:8px;
+}
+
+.eingabefeld{
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	font-style: italic;
+}
+.eingabefeld input{
+	width: 80%;
+	margin-right:8px;
+	text-align: center;
+}
+
+.button {
+  background-color: white;
+  border: 2px;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+
+  color: black;
+  border: 2px solid #bde451;
+  -webkit-appearance: none;
+}
+
+.suchfeld .button{
+	border: 3px solid #bde451;
+	padding: 12px 20px;
+	margin: 0px 0px;
+  -webkit-appearance: none;
+}
+
+.button.feld{
+	width: 100%;
+  -webkit-appearance: none;
+}
+
+.button.logbut{
+	background-color: #777;
+  -webkit-appearance: none;
+}
+
+.button:hover{
+  background-color: #bde451;
+  color: #2b2a29;
+  -webkit-appearance: none;
+}
+
+.hakenicon{
+  vertical-align: middle;
+  height: 1.3em;
+  padding: 0px;
+  margin: :0px;
+
+}
+
+/* Bilderupload*/
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	z-index: -1;
+}
+.inputfile + label {
+  background-color: white;
+  border: 2px;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+
+  color: black;
+  border: 2px solid #bde451;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+  background-color: #bde451;
+  color: #2b2a29;
+}
+
+.inputfile + label {
+	cursor: pointer; /* "hand" cursor */
+}
+
+.inputfile:focus + label {
+	outline: 1px dotted #000;
+	outline: -webkit-focus-ring-color auto 5px;
+}
+
+input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
+input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
+
+.inputfile:focus + label,
+.inputfile.has-focus + label {
+    outline: 1px dotted #000;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;clear: left;
+  width: 100%; /* Full-width */
+  height: 25px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.slider::-moz-range-thumb {
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+}
+
+.ergebnissuchbox{
+  border: solid 1px #bde451;
+  width: 100%;
+  height: auto;
+  text-align: left;
+  float: none;
+  margin-bottom: 20px;
+  display:block;
+  position: relative;
+  overflow: hidden;
+}
+.maxansichtbox{
+  width: 100%;
+  height: auto;
+  text-align: left;
+  float: none;
+  margin-bottom: 20px;
+  display:block;
+  position: relative;
+  overflow: hidden;
+}
+
+.illustration{
+  height: 90px;
+  width: auto;
+  float: none;
+}
+
+.illustrationfach{
+  height: 20vw;
+  width: auto;
+  margin-top: 10px;
+}
+
+.illustrationgross{
+  height: 150px;
+  width: auto;
+  float: none;
+}
+
+.illustrationbox{
+  margin-right: 10px;
+  float:left;
+  display: block;
+  height: auto;
+}
+.illustrationboxfach{
+  border: 1;
+  background-color: #777777;
+  color: white;
+  font-size: 1.5em;
+  height: auto;
+  text-align: center;
+  padding: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.suchboxbeschreibung{
+  float: none;
+}
+.maxobjboxbeschreibung{
+  float: none;
+  padding: 20px;
+}
+
+.suchboxbeschreibung a:link, .suchboxbeschreibung a:visited{
+  color: #2b2a29;
+}
+
+.col{
+  display: table-cell;
+  box-sizing: border-box;
+  cell-spacing: 8px;
+}
+
+
+/* Responsive layout - FÜR KLEINE BILDSCHIRME */
+@media (max-width: 890px) {
+
+/*------- REIHENFOLGE ÄNDERN --------*/
+.wrapper {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 10px;
+
+}
+
+img {
+  width: 10em;
+  display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+/*HEAD SCHICK MACHEN*/
+.strich{
+	opacity:0;
+}
+.boxhead{
+	grid-column: 1/2;
+	grid-row: 1;
+	height:85vh;
+	font-size:5vw;
+}
+
+
+
+/* --------  HEADER ANPASSEN ---------*/
+  .boxhead img{
+	height:auto;
+	width:60vw;
+	float: none;
+}
+
+.boxnav{
+  grid-column: 1/2;
+	grid-row: 2;
+}
+.boxmain{
+  grid-column: 1/2;
+	grid-row: 3;
+}
+.boxmainsmall{
+  grid-column: 1/2 ;
+	grid-row: 3;
+}
+.boxsidebar{
+  grid-column: 1/2;
+	grid-row: 4;
+}
+.boxfooter{
+	grid-column: 1/2;
+	grid-row: 5;
+}
+/* Modal Content/Box */
+.modal-content {
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.inputfile {
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+
+}
+
+
+/*COOKIEBUMS-----------------------------------------------------------------------------------------------------------------------------------------*/
+
+#cookiedingsbums a {color:#000; text-decoration:none;}
+
+#cookiedingsbums a:hover {text-decoration:underline;}
+
+#cookiedingsbums div {padding:10px; padding-right:40px;}
+
+#cookiedingsbums {
+   outline: 1px solid #7b92a9;
+   text-align:right;
+   border-top:1px solid #fff;
+   background: #d6e0eb;
+   background: -moz-linear-gradient(top, #d6e0eb 0%, #f2f6f9 100%);
+   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#d6e0eb), color-stop(100%,#f2f6f9));
+   background: -webkit-linear-gradient(top, #d6e0eb 0%,#f2f6f9 100%);
+   background: -o-linear-gradient(top, #d6e0eb 0%,#f2f6f9 100%);
+   background: -ms-linear-gradient(top, #d6e0eb 0%,#f2f6f9 100%);
+   background: linear-gradient(to bottom, #d6e0eb 0%,#f2f6f9 100%);
+   filter: progid:DXImageTransform.Microsoft.gradient(   startColorstr='#d6e0eb', endColorstr='#f2f6f9',GradientType=0 );
+   position:fixed;
+   bottom:0px;
+   z-index:10000;
+   width:100%;
+   font-size:12px;
+   line-height:16px;}
+
+#cookiedingsbumsCloser {
+   color: #777;
+   font: 14px/100% arial, sans-serif;
+   position: absolute;
+   right: 5px;
+   text-decoration: none;
+   text-shadow: 0 1px 0 #fff;
+   top: 5px;
+   cursor:pointer;
+   border-top:1px solid white;
+   border-left:1px solid white;
+   border-bottom:1px solid #7b92a9;
+   border-right:1px solid #7b92a9;
+   padding:4px;
+   background: #ced6df; /* Old browsers */
+   background: -moz-linear-gradient(top, #ced6df0%, #f2f6f9 100%);
+   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ced6df), color-stop(100%,#f2f6f9));
+   background: -webkit-linear-gradient(top, #ced6df0%,#f2f6f9 100%);
+   background: -o-linear-gradient(top, #ced6df0%,#f2f6f9 100%);
+   background: -ms-linear-gradient(top, #ced6df0%,#f2f6f9 100%);
+   background: linear-gradient(to bottom, #ced6df0%,#f2f6f9 100%);
+   filter: progid:DXImageTransform.Microsoft.gradient(    startColorstr='#ced6df', endColorstr='#f2f6f9',GradientType=0 );
+ }
+
+#cookiedingsbumsCloser:hover {border-bottom:1px solid white; border-right:1px solid white; border-top:1px solid #7b92a9; border-left:1px solid #7b92a9;}
